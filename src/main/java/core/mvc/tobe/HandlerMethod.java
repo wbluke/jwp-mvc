@@ -14,7 +14,7 @@ public class HandlerMethod {
 
     public HandlerMethod(Method method, String requestMappingUri) {
         this.method = method;
-        this.handlerExecution = args -> (ModelAndView) method.invoke(method.getDeclaringClass().newInstance(), args);
+        this.handlerExecution = args -> new ModelAndView((String) method.invoke(method.getDeclaringClass().newInstance(), args));
         this.requestMappingUri = requestMappingUri;
     }
 
